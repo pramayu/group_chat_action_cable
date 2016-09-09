@@ -1,0 +1,14 @@
+
+<p>
+  <strong>Name:</strong>
+  <%= @team.name %>
+</p>
+
+<div data-behavior='messages' data-team-id="<%= @team.id %>">
+  <% @messages.each do |message| %>
+    <%= render message %>
+  <% end %>
+</div>
+<%= form_for [@team, Message.new], remote: true do |f| %>
+  <%= f.text_area :body, rows: 1, class: "form-control", autofocus: true %>
+<% end %>
